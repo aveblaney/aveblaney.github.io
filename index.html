@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="style.css">
+<html lang="en" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>evablan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #e7dfc9;
+    --card: #fdfcf7;
+    --ink: #2b2926;
+    --ink-soft: #6b655a;
+    --line: #d8d0ba;
+    --link: #3a5a8c;
+    --card-border: #2b2926;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+  }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    color: var(--ink);
+    background-color: var(--bg);
+    background-image:
+      linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px),
+      linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/></svg>");
+    background-size: 3px 3px, 3px 3px, 180px 180px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .card {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    background: var(--card);
+    border: 1.5px solid var(--card-border);
+    border-radius: 26px;
+    padding: 34px 36px 30px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+    zoom: 1.5; /* Scales the entire card 150% */
+  }
+
+  /* language switch */
+  .lang-switch {
+    position: absolute;
+    top: 22px;
+    right: 26px;
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    color: var(--ink-soft);
+    letter-spacing: 0.5px;
+  }
+  .lang-switch button {
+    background: none;
+    border: none;
+    font: inherit;
+    color: var(--ink-soft);
+    cursor: pointer;
+    padding: 0;
+  }
+  .lang-switch button.active {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .lang-switch .sep { margin: 0 5px; color: var(--line); }
+
+  /* header row: avatar + name/intro */
+  .header-row {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin-top: 6px;
+  }
+
+  .avatar {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    border: 1.5px solid var(--card-border);
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #eee;
+  }
+
+  .name-block { padding-top: 2px; }
+
+  .name {
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    margin: 0 0 6px 0;
+  }
+
+  .intro {
+    font-family: 'Noto Serif JP', 'EB Garamond', serif;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0 0 10px 0;
+    line-height: 1.5;
+    max-width: 36ch;
+  }
+
+  .song-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-family: 'EB Garamond', serif;
+  }
+
+  .song-line .note { font-size: 13px; }
+
+  .album-art {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    object-fit: cover;
+    border: 1px solid var(--line);
+    flex-shrink: 0;
+  }
+
+  .song-line #song-title {
+    font-style: italic;
+    color: var(--ink-soft);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .song-line #song-title:hover {
+    color: var(--link);
+  }
+
+  .reroll-btn {
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 50px;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    line-height: 1;
+    color: var(--ink-soft);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-left: 2px;
+    transition: transform 0.25s ease, background 0.15s ease;
+  }
+  .reroll-btn:hover { background: var(--line); }
+  .reroll-btn.spin { transform: rotate(180deg); }
+
+  /* socials */
+  .socials {
+    display: flex;
+    gap: 14px;
+    margin: 20px 0 26px 0;
+  }
+  .socials a {
+    display: inline-flex;
+    width: 33px;
+    height: 33px;
+    opacity: 0.75;
+    transition: opacity 0.15s ease;
+  }
+  .socials a:hover { opacity: 1; }
+  .socials img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 0 0 18px 0;
+  }
+
+  /* updates */
+  .updates h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    text-underline-offset: 3px;
+  }
+
+  .updates ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+.updates li {
+  font-family: 'EB Garamond', 'Noto Serif JP', serif; /* EB Garamond first */
+  font-size: 13.5px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 7px;
+  color: var(--ink);
+}
+
+  .updates li .dot {
+    font-size: 8px;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+
+  .updates li a {
+    color: var(--link);
+    text-decoration: underline;
+  }
+
+  .updates li .date {
+    color: var(--ink-soft);
+    font-size: 12px;
+    margin-left: auto;
+    white-space: nowrap;
+    padding-left: 8px;
+  }
+
+  [data-i18n], [data-i18n-html] { }
+  html[lang="ja"] [data-en-only] { display: none; }
+  html[lang="en"] [data-ja-only] { display: none; }
+
+  @media (max-width: 400px) {
+    .card { padding: 26px 20px 22px; }
+    .lang-switch { top: 16px; right: 18px; font-size: 13px; }
+    .header-row { gap: 14px; }
+    .avatar { width: 64px; height: 64px; }
+    .name { font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+
+  <main class="card">
+    <div class="lang-switch">
+      <button id="btn-en" class="active" onclick="setLang('en')">ENG</button><span class="sep">&#8596;</span><button id="btn-ja" onclick="setLang('ja')">JPN</button>
+    </div>
+
+    <div class="header-row">
+      <img class="avatar" src="avatar.png" alt="profile photo" onerror="this.style.background='#e0dac6'">
+      <div class="name-block">
+        <p class="name">evablan</p>
+        <p class="intro">
+          <span data-en-only>selflearning things mostly for fun :D</span>
+          <span data-ja-only>パソコンの自己学習が好きです〜</span>
+        </p>
+        <div class="song-line">
+          <span class="note custom-note">&#9834;</span>
+          <img id="album-cover" class="album-art" src="" alt="album cover" onerror="this.style.background='#ccc'">
+          <a id="song-title" href="#" target="_blank" rel="noopener"></a>
+          <button class="reroll-btn" id="reroll" title="reroll song" onclick="rerollSong()">
+  <svg viewBox="0 0 24 24">
+    <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
+  </svg>
+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="socials">
+      <a href="https://twitter.com/aveblaney" title="twitter" target="_blank" rel="noopener">
+        <img src="icons/twitter.png" alt="twitter">
+      </a>
+      <a href="https://zenn.dev/evablan" title="zenn.dev" target="_blank" rel="noopener">
+        <img src="icons/zenn.png" alt="zenn.dev">
+      </a>
+      <a href="https://discord.com/users/1032150401220354098" title="discord" target="_blank" rel="noopener">
+        <img src="icons/discord.png" alt="discord">
+      </a>
+    </div>
+
+    <hr class="divider">
+
+    <div class="updates">
+      <h2><span data-en-only>updates</span><span data-ja-only>updates</span></h2>
+      <ul id="updates-list">
+        <li><span class="dot">&#9679;</span> <a href="#">new website!!!<span data-en-only></span><span data-ja-only></span></a> <span class="date">09.01</span></li>
+        <li><span class="dot">&#9679;</span> <a>--<span data-en-only></span><span data-ja-only></span></a> <span class="date">--.--</span></li>
+        <li><span class="dot">&#9679;</span> <a>--<span data-en-only></span><span data-ja-only></span></a> <span class="date">--.--</span></li>
+      </ul>
+    </div>
+  </main>
+
+<script>
+  function setLang(lang) {
+    document.getElementById('html-root').setAttribute('lang', lang);
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  }
+
+  const songs = [
+    { title: "scribbles", artist: "bad narrator", cover: "https://f4.bcbits.com/img/a2937793101_2.jpg", link: "https://soundcloud.com/artbyform/bad-narrator-scribbles" },
+    { title: "Anew", artist: "Viznode", cover: "https://f4.bcbits.com/img/a2937793101_2.jpg", link: "https://soundcloud.com/artbyform/viznode-anew" },
+    { title: "iPod Touch (Madeon Remix)", artist: "Ninajirachi", cover: "https://f4.bcbits.com/img/a1078894923_2.jpg", link: "https://soundcloud.com/ninajirachi/ipodtouchmadeonremix" },
+    { title: "夏、バス停、君を待つ", artist: "ヨルシカ", cover: "https://m.media-amazon.com/images/I/71F8u8EyVNL.jpg", link: "https://open.spotify.com/track/2JpShP9hy9ZsuHTAG64EH2" },
+    { title: "lifeline", artist: "kosu, Jonah Why", cover: "https://i1.sndcdn.com/artworks-ae2qi5ysETzEM618-4K93tQ-t500x500.png", link: "https://soundcloud.com/korewakosu/lifeline" }
+  ];
+  let lastIndex = -1;
+
+  function rerollSong() {
+    const btn = document.getElementById('reroll');
+    btn.classList.add('spin');
+    setTimeout(() => btn.classList.remove('spin'), 300);
+
+    let i;
+    do { i = Math.floor(Math.random() * songs.length); } while (i === lastIndex && songs.length > 1);
+    lastIndex = i;
+
+    const song = songs[i];
+    const songLink = document.getElementById('song-title');
+    const coverImg = document.getElementById('album-cover');
+
+    songLink.textContent = `${song.title} — ${song.artist}`;
+    songLink.href = song.link;
+    coverImg.src = song.cover;
+  }
+
+  // Load a song randomly right on initial page load
+  rerollSong();
+</script>
+
+</body>
+</html>
