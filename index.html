@@ -5,24 +5,22 @@
     const video = document.getElementById('avatar-video');
     if (!video) return;
 
-    // Unmute on click since this is a user gesture
+    // Ignore clicks if the video is already actively playing
+    if (!video.paused) return;
+
     video.muted = false;
     video.currentTime = 0;
-    
-    // Show video and play
     video.classList.add('playing');
-    
+
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.catch(err => {
         console.log('Playback error:', err);
-        // Fallback: play muted if browser blocks audio
         video.muted = true;
         video.play();
       });
     }
 
-    // Fade out back to image once video ends
     video.onended = () => {
       video.classList.remove('playing');
     };
@@ -329,7 +327,7 @@
       <div class="name-block">
         <p class="name">evablan</p>
         <p class="intro">
-          <span data-en-only>selflearning things mostly for fun :D</span>
+          <span data-en-only>selflearning things mostly for fun :D<br><i>(the avatar is clickable btw :))</i></span>
           <span data-ja-only>パソコンの自己学習が好きです〜</span>
         </p>
         <div class="song-line">

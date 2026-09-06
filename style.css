@@ -84,5 +84,6 @@
 
 #avatar-video.playing {
   opacity: 1;
-  pointer-events: auto;
+  /* Keeps the video element from receiving any click/mouse events while playing */
+  pointer-events: none; 
 }
