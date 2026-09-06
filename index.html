@@ -5,7 +5,6 @@
     const video = document.getElementById('avatar-video');
     if (!video) return;
 
-    // Ignore clicks if the video is already actively playing
     if (!video.paused) return;
 
     video.muted = false;
@@ -78,10 +77,9 @@
     border-radius: 32px;
     padding: 46px 50px 42px;
     box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-    overflow: hidden; /* safety net so nothing can visually escape the rounded border */
+    overflow: hidden; 
   }
 
-  /* language switch */
   .lang-switch {
     position: absolute;
     top: 30px;
@@ -106,7 +104,6 @@
   }
   .lang-switch .sep { margin: 0 5px; color: var(--line); }
 
-  /* header row: avatar + name/intro */
   .header-row {
     display: flex;
     gap: 22px;
@@ -126,7 +123,7 @@
 
   .name-block {
     padding-top: 2px;
-    min-width: 0; /* lets this flex item shrink instead of forcing overflow */
+    min-width: 0; 
     flex: 1 1 auto;
   }
 
@@ -149,7 +146,7 @@
 
   .song-line {
     display: flex;
-    flex-wrap: wrap; /* was missing — this is what let the row overflow the card on narrow screens */
+    flex-wrap: wrap; 
     align-items: center;
     row-gap: 4px;
     gap: 7px;
@@ -175,7 +172,7 @@
     text-decoration: underline;
     text-underline-offset: 2px;
     min-width: 0;
-    overflow-wrap: anywhere; /* lets a long title wrap instead of pushing the button off the card */
+    overflow-wrap: anywhere; 
   }
   .song-line #song-title:hover {
     color: var(--link);
@@ -244,7 +241,7 @@
   }
 
 .updates li {
-  font-family: 'EB Garamond', 'Noto Serif JP', serif; /* EB Garamond first */
+  font-family: 'EB Garamond', 'Noto Serif JP', serif; 
   font-size: 16px;
   display: flex;
   flex-wrap: wrap;
@@ -277,13 +274,11 @@
   html[lang="ja"] [data-en-only] { display: none; }
   html[lang="en"] [data-ja-only] { display: none; }
 
-  /* --- mobile --- */
   @media (max-width: 480px) {
     body { padding: 28px 14px; }
 
     .card { padding: 34px 24px 30px; }
 
-    /* the language switch moves out of the corner and sits centered above everything */
     .lang-switch {
       position: static;
       display: flex;
@@ -291,7 +286,6 @@
       margin-bottom: 20px;
     }
 
-    /* avatar stacks above the name block, and everything centers */
     .header-row {
       flex-direction: column;
       align-items: center;
@@ -303,7 +297,6 @@
 
     .intro { margin-left: auto; margin-right: auto; }
 
-    /* the two circled areas: centered instead of left-aligned */
     .song-line { justify-content: center; }
     .socials { justify-content: center; }
 
@@ -379,7 +372,7 @@
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
   }
-/* "{ title: "", artist: "", cover: "", link: "" }" */
+/* "{ title: "", artist: "", cover: "", link: "" }," */
   const songs = [
     { title: "scribbles", artist: "bad narrator", cover: "https://f4.bcbits.com/img/a2937793101_2.jpg", link: "https://soundcloud.com/artbyform/bad-narrator-scribbles" },
     { title: "Anew", artist: "Viznode", cover: "https://f4.bcbits.com/img/a2937793101_2.jpg", link: "https://soundcloud.com/artbyform/viznode-anew" },
@@ -425,7 +418,8 @@
     { title: "朝の歌", artist: "サカナクション", cover: "https://www.jvcmusic.co.jp/sp/img/jackets/VICL-63999.jpg", link: "https://www.youtube.com/watch?v=QXGhTwsMQYM" },
     { title: "Quaoar", artist: "かめりあ", cover: "https://f4.bcbits.com/img/a3333385318_2.jpg", link: "https://www.youtube.com/watch?v=yjQmZBvi3WE" },
     { title: "ナハトムジーク", artist: "Mrs. GREEN APPLE", cover: "https://aop-emtg-jp.s3.amazonaws.com/prod/public/mga/contents/information/54b9c0b206aa171fdf1bfbeb2364c9de.jpeg", link: "https://www.youtube.com/watch?v=Dsylo684yWA" },
-    { title: "yuru camp x the jackson 5", artist: "Triple-Q", cover: "https://i.ytimg.com/vi/GMTaPgnSVu0/maxresdefault.jpg", link: "https://www.youtube.com/watch?v=GMTaPgnSVu0" }
+    { title: "yuru camp x the jackson 5", artist: "Triple-Q", cover: "https://i.ytimg.com/vi/GMTaPgnSVu0/maxresdefault.jpg", link: "https://www.youtube.com/watch?v=GMTaPgnSVu0" },
+    { title: "petal", artist: "kou", cover: "https://cf.mora.jp/contents/package/0000/00000175/0025/333/227/0025333227.200.jpg", link: "https://www.youtube.com/watch?v=NfyDbwQw5Sg" },
   ];
   let lastIndex = -1;
 
@@ -447,7 +441,6 @@
     coverImg.src = song.cover;
   }
 
-  // Load a song randomly right on initial page load
   rerollSong();
 </script>
 
