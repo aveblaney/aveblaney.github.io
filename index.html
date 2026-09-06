@@ -1,5 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" id="html-root">
+<script video.js>
+  function playAvatarVideo() {
+    const video = document.getElementById('avatar-video');
+    if (!video) return;
+
+    // Unmute on click since this is a user gesture
+    video.muted = false;
+    video.currentTime = 0;
+    
+    // Show video and play
+    video.classList.add('playing');
+    
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(err => {
+        console.log('Playback error:', err);
+        // Fallback: play muted if browser blocks audio
+        video.muted = true;
+        video.play();
+      });
+    }
+
+    // Fade out back to image once video ends
+    video.onended = () => {
+      video.classList.remove('playing');
+    };
+  }
+</script>
 <head>
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
 <meta charset="UTF-8">
@@ -294,9 +322,10 @@
     </div>
 
     <div class="header-row">
-      <a href="sabishikunaiyo.mp4" target="_blank" rel="noopener" type="video/mp4" download="">
+      <div class="avatar-container" onclick="playAvatarVideo()">
         <img class="avatar" src="avatar.png" alt="profile photo" onerror="this.style.background='#e0dac6'">
-      </a>
+        <video id="avatar-video" src="sabishikunaiyo.mp4" playsinline preload="auto" muted></video>
+      </div>
       <div class="name-block">
         <p class="name">evablan</p>
         <p class="intro">
