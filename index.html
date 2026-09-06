@@ -327,8 +327,8 @@
       <div class="name-block">
         <p class="name">evablan</p>
         <p class="intro">
-          <span data-en-only>selflearning things mostly for fun :D<br><i>(the avatar is clickable btw :))</i></span>
-          <span data-ja-only>パソコンの自己学習が好きです〜</span>
+          <span data-en-only>selflearning things mostly for fun :D<br><i><sup>(the avatar is clickable btw :))</sup></i></span>
+          <span data-ja-only>パソコンの自己学習が好きです〜<br><sup>(あとプロフィール画像くりっくできるよっ！)</sup></span>
         </p>
         <div class="song-line">
           <span class="note custom-note">&#9834;</span>
@@ -379,7 +379,7 @@
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
   }
-
+/* "{ title: "", artist: "", cover: "", link: "" }" */
   const songs = [
     { title: "scribbles", artist: "bad narrator", cover: "https://f4.bcbits.com/img/a2937793101_2.jpg", link: "https://soundcloud.com/artbyform/bad-narrator-scribbles" },
     { title: "Anew", artist: "Viznode", cover: "https://f4.bcbits.com/img/a2937793101_2.jpg", link: "https://soundcloud.com/artbyform/viznode-anew" },
@@ -396,7 +396,36 @@
     { title: "謎謎", artist: "RADWIMPS", cover: "https://yt3.googleusercontent.com/Ha828VXNvRumIKTAtnlOOv_CAo4-9fJexzaABUI0DXMmj8GJmWWlnRVq_8OZjvr3gfeIPrc8xrybG5nP2A", link:"https://www.youtube.com/watch?v=2NzfQ8Pq1X4"},
     { title: "有心論", artist: "RADWIMPS", cover: "https://yt3.googleusercontent.com/DB5Dv3Aqw_qdQ2dLotQxle5cV8Rej34u3ThBxHQNbNzID473LEuOxHm78OFY5Un2ZWm29wFnW_izyKoN", link:"https://www.youtube.com/watch?v=c2y8Ba3WwPY"},
     { title: "芽吹くとき", artist: "yonige", cover: "https://yt3.googleusercontent.com/VOLyfgVvGuUjv0AWYokfpZxK7ioQTWBGwe3cTe6IIzJri3YiF_OcQ64X0fQiRsMGgD-iGeEbtLuSw5wU", link:"https://www.youtube.com/watch?v=e3YbPn7E1ko"},
-    { title: "しがないふたり(re-arrange ver.)", artist: "yonige", cover: "https://yt3.googleusercontent.com/VOLyfgVvGuUjv0AWYokfpZxK7ioQTWBGwe3cTe6IIzJri3YiF_OcQ64X0fQiRsMGgD-iGeEbtLuSw5wU", link:"https://www.youtube.com/watch?v=ZQlvPX1wLtk"}
+    { title: "しがないふたり(re-arrange ver.)", artist: "yonige", cover: "https://yt3.googleusercontent.com/VOLyfgVvGuUjv0AWYokfpZxK7ioQTWBGwe3cTe6IIzJri3YiF_OcQ64X0fQiRsMGgD-iGeEbtLuSw5wU", link:"https://www.youtube.com/watch?v=ZQlvPX1wLtk"},
+    { title: "Aperture [NCS Release]", artist: "Unison", cover:"https://linkstorage.linkfire.com/medialinks/images/121572a1-7db8-443b-93ff-027079c62c4b/artwork-440x440.jpg", link:"https://youtu.be/8VDjPYcL-oU"},
+    { title: "Find A Way Out [NCS Release]", artist: "Aeden & Harley Bird", cover:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKROkF3KlEDCMi9LZ9s-MNfnoLJm0A5FaoBEs1nRmp73XZTBNK5E5kbO4D&s=10", link:"https://youtu.be/Pk0VrERe9p8"},
+    { title: "Flutter [NCS Release]", artist: "Diamond Eyes", cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrvlKpGbHUvfsX7ioM20h-qy8lKYGYZjuQpQHjMdPIkkuZO6OxQkvTpZg&s=10", link: "https://youtu.be/lEHM9HZf0IA"},
+    { title: "Dreams [NCS Release]", artist: "Lost Sky", cover: "https://ncsmusic.s3.eu-west-1.amazonaws.com/tracks/000/000/516/1000x0/dreams-1586955318-Ar0HjTDfCI.jpg", link: "https://youtu.be/SHFTHDncw0g"},
+    { title: "main actor", artist: "美波", cover: "https://m.media-amazon.com/images/I/51gCWtzyWyL.jpg", link: "https://www.youtube.com/watch?v=jb4ybTQwcdw" },
+    { title: "セプテンバーさん", artist: "RADWIMPS", cover: "https://m.media-amazon.com/images/I/61QaOOg7JEL.jpg", link: "https://www.youtube.com/watch?v=GNYdh5k2VDk" },
+    { title: "progressive house wip", artist: "lunaa", cover: "https://i1.sndcdn.com/artworks-OBTsiyyQJymb0btr-Hhzi5Q-t500x500.png", link: "https://soundcloud.com/itlunaa/progressive-house-wip" },
+    { title: "garage2", artist: "kou", cover: "https://i1.sndcdn.com/avatars-NJML8yRpmH0KNgyU-KHWMkQ-t500x500.jpg", link: "https://soundcloud.com/kou49/garage2-1" },
+    { title: "ふたりごと (一生に一度のワープVer.)", artist: "RADWIMPS", cover: "https://yt3.googleusercontent.com/DB5Dv3Aqw_qdQ2dLotQxle5cV8Rej34u3ThBxHQNbNzID473LEuOxHm78OFY5Un2ZWm29wFnW_izyKoN", link: "https://www.youtube.com/watch?v=7i4YCZms_mg" },
+    { title: "me me she", artist: "RADWIMPS", cover: "https://yt3.googleusercontent.com/DB5Dv3Aqw_qdQ2dLotQxle5cV8Rej34u3ThBxHQNbNzID473LEuOxHm78OFY5Un2ZWm29wFnW_izyKoN", link: "https://www.youtube.com/watch?v=wvvItrHEfRA" },
+    { title: "夢番地", artist: "RADWIMPS", cover: "https://yt3.googleusercontent.com/DB5Dv3Aqw_qdQ2dLotQxle5cV8Rej34u3ThBxHQNbNzID473LEuOxHm78OFY5Un2ZWm29wFnW_izyKoN", link: "https://www.youtube.com/watch?v=Y1a8idxGGHA" },
+    { title: "One man live", artist: "RADWIMPS", cover: "https://yt3.googleusercontent.com/Ha828VXNvRumIKTAtnlOOv_CAo4-9fJexzaABUI0DXMmj8GJmWWlnRVq_8OZjvr3gfeIPrc8xrybG5nP2A", link: "https://www.youtube.com/watch?v=-rCYAeN7orA" },
+    { title: "37458", artist: "RADWIMPS", cover: "https://yt3.googleusercontent.com/Ha828VXNvRumIKTAtnlOOv_CAo4-9fJexzaABUI0DXMmj8GJmWWlnRVq_8OZjvr3gfeIPrc8xrybG5nP2A", link: "https://www.youtube.com/watch?v=HuDb7LoD74E" },
+    { title: "光", artist: "RADWIMPS", cover: "https://m.media-amazon.com/images/I/61a0RIyPPBL._UF894,1000_QL80_.jpg", link: "https://www.youtube.com/watch?v=WuU6C8oXzIA" },
+    { title: "記号として", artist: "RADWIMPS", cover: "https://m.media-amazon.com/images/I/61a0RIyPPBL._UF894,1000_QL80_.jpg", link: "https://www.youtube.com/watch?v=bZqQttJnj-U" },
+    { title: "'I' Novel", artist: "RADWIMPS", cover: "https://m.media-amazon.com/images/I/61a0RIyPPBL._UF894,1000_QL80_.jpg", link: "https://www.youtube.com/watch?v=H8Kt925tvyw" },
+    { title: "螢", artist: "RADWIMPS", cover: "https://m.media-amazon.com/images/I/61QaOOg7JEL.jpg", link: "https://www.youtube.com/watch?v=429UuB3Y6_E" },
+    { title: "π", artist: "RADWIMPS", cover: "https://src-radwimps.s3.ap-northeast-1.amazonaws.com/wp-content/uploads/2011/03/14141413/jk_zz-1.jpg", link: "https://www.youtube.com/watch?v=lDS6YnthJk0" },
+    { title: "スターライトパレード", artist: "SEKAI NO OWARI", cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2QUDmS3sQAzypPIBOzLiRCjz69f9UrlXOu7fLneRlXfazjxjr4ALRsj0&s=10", link: "https://www.youtube.com/watch?v=CJbI-5kkkqc" },
+    { title: "moment", artist: "vierre cloud", cover: "https://i.scdn.co/image/ab67616d0000b273624db3b4894e5a32e3c0206a", link: "https://www.youtube.com/watch?v=1QMG2QjsjdA" },
+    { title: "ミュージック", artist: "サカナクション", cover: "https://www.jvcmusic.co.jp/sp/img/jackets/VICL-63999.jpg", link: "https://www.youtube.com/watch?v=z2TNnnQbGJs" },
+    { title: "Aoi", artist: "サカナクション", cover: "https://www.jvcmusic.co.jp/sp/img/jackets/VICL-63999.jpg", link: "https://www.youtube.com/watch?v=65Ah1Yj59zA" },
+    { title: "ボイル", artist: "サカナクション", cover: "https://www.jvcmusic.co.jp/sp/img/jackets/VICL-63999.jpg", link: "https://www.youtube.com/watch?v=byRfJ8p4c6c" },
+    { title: "映画", artist: "サカナクション", cover: "https://www.jvcmusic.co.jp/sp/img/jackets/VICL-63999.jpg", link: "https://www.youtube.com/watch?v=mxhKqeRTz5Q" },
+    { title: "ストラクチャー", artist: "サカナクション", cover: "https://www.jvcmusic.co.jp/sp/img/jackets/VICL-63999.jpg", link: "https://www.youtube.com/watch?v=OlvMy6TiNzQ" },
+    { title: "朝の歌", artist: "サカナクション", cover: "https://www.jvcmusic.co.jp/sp/img/jackets/VICL-63999.jpg", link: "https://www.youtube.com/watch?v=QXGhTwsMQYM" },
+    { title: "Quaoar", artist: "かめりあ", cover: "https://f4.bcbits.com/img/a3333385318_2.jpg", link: "https://www.youtube.com/watch?v=yjQmZBvi3WE" },
+    { title: "ナハトムジーク", artist: "Mrs. GREEN APPLE", cover: "https://aop-emtg-jp.s3.amazonaws.com/prod/public/mga/contents/information/54b9c0b206aa171fdf1bfbeb2364c9de.jpeg", link: "https://www.youtube.com/watch?v=Dsylo684yWA" },
+    { title: "yuru camp x the jackson 5", artist: "Triple-Q", cover: "https://i.ytimg.com/vi/GMTaPgnSVu0/maxresdefault.jpg", link: "https://www.youtube.com/watch?v=GMTaPgnSVu0" }
   ];
   let lastIndex = -1;
 
