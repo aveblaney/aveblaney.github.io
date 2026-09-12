@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" id="html-root">
 <script video.js>
+let isVideoLoading = false;
+
   function playAvatarVideo() {
     const video = document.getElementById('avatar-video');
+    const spinner = document.getElementById('avatar-spinner');
     if (!video) return;
 
-    if (!video.paused) return;
+    // Prevent multiple clicks while video is playing or actively downloading
+    if (!video.paused || isVideoLoading) return;
 
+    // If video hasn't been loaded yet, download it on demand
+    if (!video.src || video.src === window.location.href) {
+      isVideoLoading = true;
+      if (spinner) spinner.classList.add('loading');
+
+      // Set src and initiate download
+      video.src = video.getAttribute('data-src');
+      video.load();
+
+      // Play once enough data has downloaded
+      const onReadyToPlay = () => {
+        isVideoLoading = false;
+        if (spinner) spinner.classList.remove('loading');
+        startPlayback(video);
+        video.removeEventListener('canplay', onReadyToPlay);
+      };
+
+      video.addEventListener('canplay', onReadyToPlay);
+      return;
+    }
+
+    // If already loaded from a previous click, play immediately
+    startPlayback(video);
+  }
+
+  function startPlayback(video) {
     video.muted = false;
     video.currentTime = 0;
     video.classList.add('playing');
@@ -312,11 +342,11 @@
       <button id="btn-en" class="active" onclick="setLang('en')">ENG</button><span class="sep">&#8596;</span><button id="btn-ja" onclick="setLang('ja')">JPN</button>
     </div>
 
-    <div class="header-row">
-      <div class="avatar-container" onclick="playAvatarVideo()">
-        <img class="avatar" src="avatar.png" alt="profile photo" onerror="this.style.background='#e0dac6'">
-        <video id="avatar-video" src="sabishikunaiyo.mp4" playsinline preload="auto" muted></video>
-      </div>
+    <div class="avatar-container" onclick="playAvatarVideo()">
+      <img class="avatar" src="avatar.png" alt="profile photo" onerror="this.style.background='#e0dac6'">
+      <img id="avatar-spinner" class="avatar-spinner" src="spinner.gif" alt="loading...">
+      <video id="avatar-video" data-src="sabishikunaiyo.mp4" playsinline preload="none" muted></video>
+    </div>
       <div class="name-block">
         <p class="name">evablan</p>
         <p class="intro">

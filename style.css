@@ -84,3 +84,21 @@
   opacity: 1;
   pointer-events: none; 
 }
+
+/* Loading spinner centered over avatar */
+.avatar-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 28px;
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.avatar-spinner.loading {
+  opacity: 1;
+}
