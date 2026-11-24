@@ -389,9 +389,9 @@ let isVideoLoading = false;
     <div class="updates">
       <h2><span data-en-only>updates</span><span data-ja-only>updates</span></h2>
       <ul id="updates-list">
+        <li><span class="dot">&#9679;</span> <a href="updates/20261012.html"><span data-en-only>life updates and more</span><span data-ja-only>なんか、最近異常にやさしさに恵まれてる件</span></a> <span class="date">10.13</span></li>
         <li><span class="dot">&#9679;</span> <a href="updates/zenn0902.html"><span data-en-only>first zenn article post!!!</span><span data-ja-only>zenn初投稿！</span></a> <span class="date">09.02</span></li>
         <li><span class="dot">&#9679;</span> <a href="updates/newpage.html"><span data-en-only>new website!!!</span><span data-ja-only>new website!!!</span></a> <span class="date">09.01</span></li>
-        <li><span class="dot">&#9679;</span> <a><span data-en-only>--</span><span data-ja-only>--</span></a> <span class="date">--.--</span></li>
       </ul>
     </div>
   </main>
@@ -463,11 +463,12 @@ let isVideoLoading = false;
     { title: "SUNNY", artist: "Snail's House", cover: "https://f4.bcbits.com/img/a3944782767_2.jpg", link: "https://www.youtube.com/watch?v=OjVU05QDfLI" },
     { title: "SHINY DAYS", artist: "亜咲花", cover: "https://asaka1007.jp/common/img/discography/ussw-0070.jpg", link: "https://www.youtube.com/watch?v=0me_7B2rRIE" },
     { title: "passport", artist: "Sean Pitaro, doug suh", cover: "https://m.media-amazon.com/images/I/81vaHRNSRWL.jpg", link: "https://www.youtube.com/watch?v=Op10ILDgySw" },
-    { title: "Wall", artist: "Good Kid", cover: "https://m.media-amazon.com/images/I/91s2IKvZ57L.jpg", link: "https://www.youtube.com/watch?v=HG8WEN3SKVk" },
+    { title: "Wall", artist: "Good Kid", cover:"https://f4.bcbits.com/img/a1286453401_2.jpg", link:"https://www.youtube.com/watch?v=HG8WEN3SKVk"},
+    { title: "命ばっかり（Eve cover）", artist: "ぬゆり", cover:"https://yt3.googleusercontent.com/vZx2xlyaN3JtbnZXSu51NQWLn8cOKSb_2ptQa7vHLk9Rf7QXptOrqWINMb88L04NUKb0qA1mz4uJupvf", link:"https://www.youtube.com/watch?v=5CjA4W6BJeU"}
   ];
   let lastIndex = -1;
 
-// Create a copy pool from the main array
+// Create a copy pool from the main array. 67
   let remainingSongs = [...songs];
 
   function rerollSong() {
